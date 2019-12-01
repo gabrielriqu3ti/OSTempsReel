@@ -13,6 +13,9 @@
 #define OSTempsReel_PosixThread_h_INCLUDED
 
 #include <pthread.h>
+#include <errno.h>
+#include <iostream>
+//#include <exception>
 
 namespace OSTempsReel
 {
@@ -29,7 +32,38 @@ namespace OSTempsReel
     {
         // Données
         public:
-            Exception e;
+            class Exception
+            {
+                public:
+
+                    int retVal;
+                    Exception(int rval)
+                    {
+                        retVal = rval;
+                    };
+                    void message()
+                    {
+                        switch(retVal)
+                        {
+                            case(EAGAIN):
+                            std::cout << "Erreur " << retVal << " : Ressources unsifisants pour créer un thread !" << std::endl;
+                            break;
+                            case(ESRCH):
+                            std::cout << "Erreur " << retVal << " : Aucun thread avec l'ID spécifié était trouvé !" << std::endl;
+                            break;
+                            case(EINVAL):
+                            std::cout << "Erreur " << retVal << " : Paramètres invalides dans attr" << std::endl;
+                            break;
+                            case(EPERM):
+                            std::cout << "Erreur " << retVal << " : Aucune autorisation pour établir un scheduling policy";
+                            std::cout << " et paramètres spécifiés dans attr" << std::endl;
+                            break;
+                            case(ENOMEM):
+                            std::cout << "Erreur " << retVal << " : pthread_attr_init ou pthread_attr_destroy a échoué" << std::endl;
+                            break;
+                        }
+                    };
+            };
         private:
             pthread_t posixId;
             pthread_attr_t posixAttr;
@@ -41,7 +75,8 @@ namespace OSTempsReel
             PosixThread();
             PosixThread(pthread_t posixId);
             ~PosixThread();
-            void start(void* (*) (void*) threadFunc, void* threadArg);
+//            void start(void* (*) (void*) threadFunc, void* threadArg);
+            void start(void* threadFunc, void* threadArg);
             void join();
             bool join(double timeout_ms);
             bool setScheduling(int schedPolicy, int priority);

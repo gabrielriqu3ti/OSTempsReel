@@ -2,9 +2,9 @@
 |
 | Fichier :                td3c_main.cpp
 | Auteur :                 RIQUETI Gabriel Henrique
-| Date :                   27/10/2019
-| Commentaires :           ENSTA ParisTech ROB307 TD1a
-| Commande :               g++ td3c_main.cpp TimeSpec.cpp OSTempsReel/Timer.cpp
+| Date :                   27/11/2019
+| Commentaires :           ENSTA ParisTech ROB305 TD3c
+| Commande :               g++ main_td3c.cpp TimeSpec.cpp OSTempsReel/Timer.cpp
 |                          OSTempsReel/PeriodicTimer.cpp OSTempsReel/Looper.cpp
 |                          OSTempsReel/Calibrator.cpp OSTempsReel/CpuLoop.cpp
 |                          -lrt -lpthread -o ../td3c && sudo ../td3c
@@ -27,10 +27,18 @@ int main(int argc, char *argv[])
 {
 //	if (argc==1)
 //	{
-		cout << "TD-3c" << endl;
+	double samplingPeriod_ms = 500.0;
+	unsigned int nSamples = 10;
 
-		OSTempsReel::Calibrator calibrator = OSTempsReel::Calibrator(200.0,10);
-		calibrator.start(1000.0);
+	cout << "TD-3c" << endl;
+
+	OSTempsReel::Calibrator calibrator = OSTempsReel::Calibrator(samplingPeriod_ms, nSamples);
+	vector<OSTempsReel::CpuLoop> vCpuLoop;
+
+//	for (unsigned int i; i<nSamples; i++)
+//	{
+//		vCpuLoop.push_back(OSTempsReel::CpuLoop(calibrator));
+//	}
 
 //		timespec_wait(timespec_from_ms(3000));
 //	}

@@ -4,7 +4,7 @@
 | Auteur :                 RIQUETI Gabriel Henrique
 | Date :                   07/11/2019
 | Commentaires :           ENSTA ParisTech ROB305 TD-2b
-| Commande :               g++ td2b_main.cpp TimeSpec.cpp -lrt -lpthread -o ../td2b
+| Commande :               g++ main_td2b.cpp TimeSpec.cpp -lrt -lpthread -o ../td2b
 |                          && sudo ../td2b
 | Historique de Révision :
 |

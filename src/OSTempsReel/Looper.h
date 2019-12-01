@@ -22,8 +22,7 @@ namespace OSTempsReel
 * Auteur :                 RIQUETI
 * Date :                   27/11/2019
 *
-* But :                    Implémenter les fonctionnalités d'un timer
-*                          Posix
+* But :                    Implémenter une boucle
 ***********************************************************************/
     class Looper
     {

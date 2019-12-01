@@ -4,7 +4,7 @@
 | Auteur :                 RIQUETI Gabriel Henrique
 | Date :                   22/10/2019
 | Commentaires :           ENSTA ParisTech ROB305 TD-1d
-| Commande :               g++ td1d_main.cpp TimeSpec.cpp -lrt -o ../td1d && ../td1d
+| Commande :               g++ main_td1d.cpp TimeSpec.cpp -lrt -o ../td1d && ../td1d
 | Historique de Révision :
 |
 */////////////////////////////////////////////////////////////////////////////////

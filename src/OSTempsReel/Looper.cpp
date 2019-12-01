@@ -20,8 +20,7 @@ using namespace OSTempsReel;
 * Auteur :                 RIQUETI
 * Date :                   27/11/2019
 *
-* But :                    Mésurer le nombre de boucles efféctuées
-*                          pendant un temps spécifié
+* But :                    Mésurer le temps pour effectuer une boucle
 ----------------------------------------------------------------------*/
 double Looper::runLoop(double nLoops)
 {

@@ -36,7 +36,7 @@ namespace OSTempsReel
             double stopTime_ms();
             double execTime_ms();
         protected:
-            run();
+            void run();
         private:
             static void* call_run(void* v_thread);
     };

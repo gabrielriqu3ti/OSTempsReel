@@ -28,6 +28,9 @@ namespace OSTempsReel
 ***********************************************************************/
     class CpuLoop : public Looper
     {
+        // Données
+        public:
+            Calibrator* paCalibrator;
         // Méthodes
         public:
             CpuLoop(Calibrator& calibrator);

@@ -3,8 +3,8 @@
 | Fichier :                td1a_main.cpp
 | Auteur :                 RIQUETI Gabriel Henrique
 | Date :                   18/10/2019
-| Commentaires :           ENSTA ParisTech ROB307 TD1a
-| Commande :               g++ td3b_main.cpp TimeSpec.cpp OSTempsReel/Timer.cpp
+| Commentaires :           ENSTA ParisTech ROB305 TD-3b
+| Commande :               g++ main_td3b.cpp TimeSpec.cpp OSTempsReel/Timer.cpp
 |                          OSTempsReel/PeriodicTimer.cpp OSTempsReel/CountDown.cpp
 |                          -lrt -lpthread -o ../td3b && sudo ../td3b
 | Historique de Révision :

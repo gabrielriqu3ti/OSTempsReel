@@ -10,28 +10,11 @@ Orientateur : Anvar SHEBLI
 
 Le 2 décembre de 2019
 
-Ce projet est l'ensemble des archives sources en C++ pour exécuter les TDs de ROB305 - Programmation multitâches et OS temps réel.
+Ce projet est l'ensemble des archives sources en C++ pour exécuter les TDs de ROB305 - Programmation multitâches et OS temps réel. Pour lire la propose de chaque code source, accéder le site suivant [Programmation multitâches & OS temps réel](http://irfu.cea.fr/Pisp/shebli.anvar/prog-mt-rtos/index.html)
 
 ## Conténu
 
-Dédans le dossier [src]() de ce projet, on peut trouver les codes sources de les travail de programmation ci-dessous :
-
-- TP 1-a;
-- TP 1-b;
-- TP 1-c;
-- TP 1-d;
-- TP 1-e;
-- TP 2-a;
-- TP 2-b;
-- TP 2-c;
-- TP 3-a;
-- TP 3-b;
-- TP 3-c;
-- TP 4-a;
-- TP 4-b;
-- TP 4-c;
-- TP 4-d;
-- TP 5;
+Dédans le dossier [src]() de ce projet, on peut trouver les codes sources développés.
 
 Les fichiers de classes crées sont dans le dossier [OSTempsReel]().
 

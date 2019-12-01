@@ -22,7 +22,8 @@ using namespace OSTempsReel;
 ----------------------------------------------------------------------*/
 CpuLoop::CpuLoop(Calibrator& calibrator)
 {
-
+    paCalibrator = &calibrator;
+//    paCalibrator->nLoops(10.0);
 }
 
 /*----------------------------------------------------------------------
@@ -34,5 +35,5 @@ CpuLoop::CpuLoop(Calibrator& calibrator)
 ----------------------------------------------------------------------*/
 void CpuLoop::runTime(double duration_ms)
 {
-
+    runLoop();
 }

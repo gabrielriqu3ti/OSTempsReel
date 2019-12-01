@@ -3,8 +3,8 @@
 | Fichier :                td3a_main.cpp
 | Auteur :                 RIQUETI Gabriel Henrique
 | Date :                   08/11/2019
-| Commentaires :           ENSTA ParisTech ROB305 TD3a
-| Commande :               g++ td3a_main.cpp TimeSpec.cpp OSTempsReel/Chrono.cpp
+| Commentaires :           ENSTA ParisTech ROB305 TD-3a
+| Commande :               g++ main_td3a.cpp TimeSpec.cpp OSTempsReel/Chrono.cpp
 |                          -lrt -o ../td3a && sudo ../td3a
 | Historique de Révision :
 |

@@ -1,10 +1,10 @@
-unsigned /*////////////////////////////////////////////////////////////////////////////////
+/*////////////////////////////////////////////////////////////////////////////////
 |
 | Fichier :                td1e_main.cpp
 | Auteur :                 RIQUETI Gabriel Henrique
 | Date :                   04/11/2019
 | Commentaires :           ENSTA ParisTech ROB305 TD-1e
-| Commande :               g++ td1e_main.cpp TimeSpec.cpp -lrt -lpthread -o ../td1e
+| Commande :               g++ main_td1e.cpp TimeSpec.cpp -lrt -lpthread -o ../td1e
 |                          sudo ../td1e
 | Historique de Révision :
 |
@@ -38,7 +38,7 @@ struct myDataHandler
 ----------------------------------------------------------------------------*/
 int incr(unsigned int nLoops, double* pCounter, bool* pStop)
 {
-    unsigned int iLoop;
+    int iLoop;
     for (iLoop=0; iLoop<nLoops && !*pStop; ++iLoop)
     {
         *pCounter += 1.0;

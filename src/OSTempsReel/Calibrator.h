@@ -33,6 +33,7 @@ namespace OSTempsReel
         private:
             double a, b;
             std::vector<double> samples;
+            Looper cLooper;
 
         // Méthodes
         public:
