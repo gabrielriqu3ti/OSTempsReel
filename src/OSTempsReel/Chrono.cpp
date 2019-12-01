@@ -101,7 +101,7 @@ double Chrono::stopTime()
 * Auteur :                 RIQUETI
 * Date :                   08/11/2019
 *
-* But :                    stopTime - startTime en ms
+* But :                    Retourner le temps d'exécution en ms
 ----------------------------------------------------------------------*/
 double Chrono::lap()
 {

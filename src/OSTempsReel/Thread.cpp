@@ -1,6 +1,6 @@
 /*///////////////////////////////////////////////////////////////////////
 |
-| Fichier :                PosixThread.cpp
+| Fichier :                Thread.cpp
 | Auteur :                 RIQUETI Gabriel Henrique
 | Date :                   30/11/2019
 | Commentaires :           ENSTA ParisTech ROB305 TD-4a
@@ -11,6 +11,7 @@
 #include "../TimeSpec.h"
 #include "PosixThread.h"
 #include "Thread.h"
+#include "Chrono.h"
 #include <iostream>
 
 using namespace OSTempsReel;
@@ -24,7 +25,9 @@ using namespace OSTempsReel;
 ----------------------------------------------------------------------*/
 Thread::Thread()
 {
+    PosixThread(pThreadId);
 
+    chrono = Chrono();
 }
 
 /*----------------------------------------------------------------------
@@ -36,7 +39,18 @@ Thread::Thread()
 ----------------------------------------------------------------------*/
 Thread::~Thread()
 {
+}
 
+/*----------------------------------------------------------------------
+* Fonction :               startTime_ms
+* Auteur :                 RIQUETI
+* Date :                   30/11/2019
+*
+* But :                    Retourner le temps absolu de fin
+----------------------------------------------------------------------*/
+void Thread::start()
+{
+    PosixThread::start(call_run, (void*) this);
 }
 
 /*----------------------------------------------------------------------
@@ -48,7 +62,8 @@ Thread::~Thread()
 ----------------------------------------------------------------------*/
 double Thread::sleep_ms(double delay_ms)
 {
-    return 0.0;
+    timespec_wait(timespec_from_ms(delay_ms));
+    return delay_ms;
 }
 
 /*----------------------------------------------------------------------
@@ -56,19 +71,11 @@ double Thread::sleep_ms(double delay_ms)
 * Auteur :                 RIQUETI
 * Date :                   30/11/2019
 *
-* But :                    ?
+* But :                    Retourner le temps absolu du début
 ----------------------------------------------------------------------*/
 double Thread::startTime_ms()
 {
-    timespec begin, end;
-
-    clock_gettime(CLOCK_REALTIME, &begin);
-
-
-
-    clock_gettime(CLOCK_REALTIME, &end);
-
-    return timespec_to_ms(end-begin);
+    return chrono.startTime();
 }
 
 /*----------------------------------------------------------------------
@@ -76,19 +83,11 @@ double Thread::startTime_ms()
 * Auteur :                 RIQUETI
 * Date :                   30/11/2019
 *
-* But :                    ?
+* But :                    Retourner le temps absolu du fin
 ----------------------------------------------------------------------*/
 double Thread::stopTime_ms()
 {
-    timespec begin, end;
-
-    clock_gettime(CLOCK_REALTIME, &begin);
-
-
-
-    clock_gettime(CLOCK_REALTIME, &end);
-
-    return timespec_to_ms(end-begin);
+    return chrono.stopTime();
 }
 
 /*----------------------------------------------------------------------
@@ -96,19 +95,35 @@ double Thread::stopTime_ms()
 * Auteur :                 RIQUETI
 * Date :                   30/11/2019
 *
-* But :                    ?
+* But :                    Retourner le temps d'exécution
 ----------------------------------------------------------------------*/
 double Thread::execTime_ms()
 {
-    timespec begin, end;
+    return (chrono.stopTime() - chrono.startTime());
+}
 
-    clock_gettime(CLOCK_REALTIME, &begin);
+/*----------------------------------------------------------------------
+* Fonction :               setLoops
+* Auteur :                 RIQUETI
+* Date :                   31/11/2019
+*
+* But :                    Attribuer une valeur à nLoops
+----------------------------------------------------------------------*/
+void Thread::setLoops(unsigned int Loops)
+{
+    nLoops = Loops;
+}
 
-
-
-    clock_gettime(CLOCK_REALTIME, &end);
-
-    return timespec_to_ms(end-begin);
+/*----------------------------------------------------------------------
+* Fonction :               getCount
+* Auteur :                 RIQUETI
+* Date :                   31/11/2019
+*
+* But :                    Retourner le compteur
+----------------------------------------------------------------------*/
+unsigned int Thread::getCount()
+{
+    return count;
 }
 
 /*----------------------------------------------------------------------
@@ -120,7 +135,11 @@ double Thread::execTime_ms()
 ----------------------------------------------------------------------*/
 void Thread::run()
 {
+    chrono.restart();
 
+    for(unsigned int i=0; i<nLoops; i++) count ++;
+
+    chrono.stop();
 }
 
 /*----------------------------------------------------------------------
@@ -128,10 +147,12 @@ void Thread::run()
 * Auteur :                 RIQUETI
 * Date :                   30/11/2019
 *
-* But :                    ?
+* But :                    Appeler run
 ----------------------------------------------------------------------*/
 void* Thread::call_run(void* v_thread)
 {
-    void* pData;
-    return pData;
+    Thread* pThread = (Thread*) v_thread;
+    pThread->run();
+
+    return v_thread;
 }

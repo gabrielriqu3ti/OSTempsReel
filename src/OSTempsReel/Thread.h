@@ -14,6 +14,7 @@
 
 #include <pthread.h>
 #include "PosixThread.h"
+#include "Chrono.h"
 
 namespace OSTempsReel
 {
@@ -27,14 +28,22 @@ namespace OSTempsReel
 ***********************************************************************/
     class Thread : public PosixThread
     {
+        // Données
+        private:
+            Chrono chrono;
+            static unsigned int count;  // déclaration de variable statique
+            static unsigned int nLoops; // déclaration de variable statique
         // Méthodes
         public:
             Thread();
             ~Thread();
-            double sleep_ms(double delay_ms);
+            void start();
+            static double sleep_ms(double delay_ms);
             double startTime_ms();
             double stopTime_ms();
             double execTime_ms();
+            static void setLoops(unsigned int Loops);
+            static unsigned int getCount();
         protected:
             void run();
         private:
