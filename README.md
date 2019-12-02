@@ -106,9 +106,9 @@ g++ main_td2a.cpp TimeSpec.cpp -lrt -lpthread -o ../td2a
 sudo ../td2a [TAILLE_DE_LA_BOUCLE] [NOMBRE_DE_TACHES]
 ```
 
-TAILLE_DE_LA_BOUCLE : entier.
+TAILLE_DE_LA_BOUCLE : entier non signé.
 
-NOMBRE_DE_TACHES : entier.
+NOMBRE_DE_TACHES : entier non signé.
 
 ### b) Mesure de temps d'exécution
 
@@ -123,9 +123,9 @@ g++ main_td2b.cpp TimeSpec.cpp -lrt -lpthread -o ../td2b
 ```bash
 sudo ../td2b [TAILLE_DE_LA_BOUCLE] [NOMBRE_DE_TACHES] [ORDENANCE]
 ```
-TAILLE_DE_LA_BOUCLE : entier.
+TAILLE_DE_LA_BOUCLE : entier non signé.
 
-NOMBRE_DE_TACHES : entier.
+NOMBRE_DE_TACHES : entier non signé.
 
 ORDENANCE :
 - SCHED_RR
@@ -147,9 +147,9 @@ g++ main_td2c.cpp TimeSpec.cpp -lrt -lpthread -o ../td2c
 sudo ../td2c [TAILLE_DE_LA_BOUCLE] [NOMBRE_DE_TACHES] [ORDENANCE] [MUTEX]
 ```
 
-TAILLE_DE_LA_BOUCLE : entier.
+TAILLE_DE_LA_BOUCLE : entier non signé.
 
-NOMBRE_DE_TACHES : entier.
+NOMBRE_DE_TACHES : entier non signé.
 
 ORDENANCE :
 - SCHED_RR
@@ -219,15 +219,23 @@ g++ main_td4a.cpp TimeSpec.cpp OSTempsReel/PosixThread.cpp OSTempsReel/Thread.cp
 #### Exécution
 
 ```bash
-sudo ../td4a
+sudo ../td4b [TAILLE_DE_LA_BOUCLE] [NOMBRE_DE_TACHES] [ORDENANCE]
 ```
+TAILLE_DE_LA_BOUCLE : entier non signé.
+
+NOMBRE_DE_TACHES : entier non signé.
+
+ORDENANCE :
+- SCHED_RR
+- SCHED_FIFO
+- SCHED_OTHER
 
 ### b) Classe Mutex et Mutex::Lock
 
 #### Compilation
 
 ```bash
-g++ main_td4b.cpp TimeSpec.cpp OSTempsReel/PosixThread.cpp OSTempsReel/Thread.cpp OSTempsReel/Mutex.cpp OSTempsReel/Chrono.cpp -lrt -lpthread -o ../td4b
+g++ td4b_main.cpp TimeSpec.cpp OSTempsReel/PosixThread.cpp OSTempsReel/Thread.cpp OSTempsReel/Chrono.cpp OSTempsReel/ThreadCounterSafe.cpp OSTempsReel/Mutex.cpp -lrt -lpthread -o ../td4b && sudo ../td4b
 ```
 
 #### Exécution
@@ -235,6 +243,22 @@ g++ main_td4b.cpp TimeSpec.cpp OSTempsReel/PosixThread.cpp OSTempsReel/Thread.cp
 ```bash
 sudo ../td4b
 ```
+
+```bash
+sudo ../td4b [TAILLE_DE_LA_BOUCLE] [NOMBRE_DE_TACHES] [ORDENANCE] [TIMEOUT_MS]
+```
+
+TAILLE_DE_LA_BOUCLE : entier non signé.
+
+NOMBRE_DE_TACHES : entier non signé.
+
+ORDENANCE :
+- SCHED_RR
+- SCHED_FIFO
+- SCHED_OTHER
+
+TIMEOUT_MS (optionel) : entier non signé.
+
 
 ### c) Classe Semaphore
 
