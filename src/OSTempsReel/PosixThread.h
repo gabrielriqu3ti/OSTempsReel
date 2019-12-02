@@ -1,10 +1,10 @@
 /*///////////////////////////////////////////////////////////////////////
 |
 | Fichier :                PosixThread.h
-|| Auteur :                RIQUETI Gabriel Henrique
+| Auteur :                 RIQUETI Gabriel Henrique
 | Date :                   30/11/2019
 | Commentaires :           ENSTA ParisTech ROB305 TD-4a
- Historique de Révision :
+| Historique de Révision :
 |
 *////////////////////////////////////////////////////////////////////////
 

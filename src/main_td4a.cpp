@@ -5,8 +5,9 @@
 | Date :                   27/11/2019
 | Commentaires :           ENSTA ParisTech ROB305 TD4a
 | Commande :               g++ td4a_main.cpp TimeSpec.cpp OSTempsReel/PosixThread.cpp
-|                          OSTempsReel/PosixThread.cpp OSTempsReel/PosixThread.cpp
-|                          -lrt -lpthread -o ../td4a && sudo ../td4a
+|                          OSTempsReel/Thread.cpp OSTempsReel/Chrono.cpp
+|                          OSTempsReel/ThreadCounter.cpp -lrt -lpthread -o ../td4a
+|                          && sudo ../td4a
 | Historique de Révision :
 |
 */////////////////////////////////////////////////////////////////////////////////
@@ -15,13 +16,14 @@
 #include "TimeSpec.h"
 #include "OSTempsReel/PosixThread.h"
 #include "OSTempsReel/Thread.h"
+#include "OSTempsReel/ThreadCounter.h"
 #include <pthread.h>
 #include <time.h>
 #include <iostream>
 
 // unsigned définiton de variables statiques
-unsigned int OSTempsReel::Thread::count = 0;
-unsigned int OSTempsReel::Thread::nLoops = 0;
+unsigned int OSTempsReel::ThreadCounter::count = 0;
+unsigned int OSTempsReel::ThreadCounter::nLoops = 0;
 
 using namespace std;
 
@@ -40,8 +42,8 @@ int main(int argc, char *argv[])
 		cout << "Taille de boucles : " << nLoops << endl;
         cout << "Nombre de tâches  : " << nTasks << endl;
 
-		OSTempsReel::Thread thread[nTasks];
-		OSTempsReel::Thread::setLoops(nLoops);
+		OSTempsReel::ThreadCounter thread[nTasks];
+		OSTempsReel::ThreadCounter::setLoops(nLoops);
 
 		for(unsigned int i=0; i<nTasks; i++)
 		{
@@ -110,7 +112,7 @@ int main(int argc, char *argv[])
 
 		try
 		{
-			cout << "Compteur : " << OSTempsReel::Thread::getCount() << endl;
+			cout << "Compteur : " << OSTempsReel::ThreadCounter::getCount() << endl;
 		}
 		catch(OSTempsReel::PosixThread::Exception exc)
 		{

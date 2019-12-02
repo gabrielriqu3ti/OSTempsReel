@@ -10,6 +10,7 @@
 
 #include "../TimeSpec.h"
 #include "PosixThread.h"
+#include <errno.h>
 #include <iostream>
 
 using namespace OSTempsReel;
@@ -58,6 +59,7 @@ PosixThread::PosixThread(pthread_t pThreadId)
 ----------------------------------------------------------------------*/
 PosixThread::~PosixThread()
 {
+    isActive = false;
     pthread_attr_destroy(&posixAttr);
 
 }
@@ -71,8 +73,12 @@ PosixThread::~PosixThread()
 ----------------------------------------------------------------------*/
 void PosixThread::start(void* threadFunc(void*), void* threadArg)
 {
+    int rVal;
+
+    rVal = pthread_create(&posixId, &posixAttr, threadFunc, threadArg);
+    if (rVal != 0) throw Exception(rVal);
+
     isActive = true;
-    pthread_create(&posixId, &posixAttr, threadFunc, threadArg);
 
 }
 
@@ -195,32 +201,32 @@ void PosixThread::Exception::message()
     switch(retVal)
     {
         case(EAGAIN):
-        std::cout << "Erreur EAGAIN (" << retVal << ") : Ressources unsifisants pour créer un thread !" << std::endl;
+        std::cout << "Posix Thread Erreur EAGAIN (" << retVal << ") : Ressources unsifisants pour créer un thread !" << std::endl;
         break;
         case(ESRCH):
-        std::cout << "Erreur ESRCH (" << retVal << ") : Aucun thread avec l'ID spécifié était trouvé !" << std::endl;
+        std::cout << "Posix Thread Erreur ESRCH (" << retVal << ") : Aucun thread avec l'ID spécifié était trouvé !" << std::endl;
         break;
         case(EINVAL):
-        std::cout << "Erreur EINVAL (" << retVal << ") : Paramètres invalides !" << std::endl; // dans attr ou join ou abstime
+        std::cout << "Posix Thread Erreur EINVAL (" << retVal << ") : Paramètres invalides !" << std::endl; // dans attr ou join ou abstime
         break;
         case(EPERM):
-        std::cout << "Erreur EPERM (" << retVal << ") : Aucune autorisation pour établir un scheduling policy";
+        std::cout << "Posix Thread Erreur EPERM (" << retVal << ") : Aucune autorisation pour établir un scheduling policy";
         std::cout << " et paramètres spécifiés dans attr !" << std::endl;
         break;
         case(ENOMEM):
-        std::cout << "Erreur ENOMEM (" << retVal << ") : pthread_attr_init ou pthread_attr_destroy a échoué !" << std::endl;
+        std::cout << "Posix Thread Erreur ENOMEM (" << retVal << ") : pthread_attr_init ou pthread_attr_destroy a échoué !" << std::endl;
         break;
         case(EDEADLK):
-        std::cout << "Erreur EDEADLK (" << retVal << ") : deadlock detécté ou threads appellent les uns les autres !" << std::endl;
+        std::cout << "Posix Thread Erreur EDEADLK (" << retVal << ") : deadlock detécté ou threads appellent les uns les autres !" << std::endl;
         break;
         case(EBUSY):
-        std::cout << "Erreur EBUSY (" << retVal << ") : thread pas encore terminé au moment de l'appel !" << std::endl;
+        std::cout << "Posix Thread Erreur EBUSY (" << retVal << ") : thread pas encore terminé au moment de l'appel !" << std::endl;
         break;
         case(ETIMEDOUT):
-        std::cout << "Erreur ETIMEDOUT (" << retVal << ") : L'appel terminé avant thread !" << std::endl;
+        std::cout << "Posix Thread Erreur ETIMEDOUT (" << retVal << ") : L'appel terminé avant thread !" << std::endl;
         break;
         default:
-        std::cout << "Erreur " << retVal << " : inconnu !" << std::endl;
+        std::cout << "Posix Thread Erreur " << retVal << " : inconnu !" << std::endl;
         break;
         exit(1);
     }

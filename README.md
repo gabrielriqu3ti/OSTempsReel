@@ -14,7 +14,7 @@ Ce projet est l'ensemble des archives sources en C++ pour exécuter les TDs de R
 
 ## Conténu
 
-Dédans le dossier [src]() de ce projet, on peut trouver les codes sources développés.
+Dédans le dossier [src]() de ce projet, on peut trouver les codes sources développés. On peut tourner les applications depuis un terminal linux dans le dossier src et en utilisant les codes de compilation et d'exécution montrés pour chaque TD.
 
 Les fichiers de classes crées sont dans le dossier [OSTempsReel]().
 
@@ -208,72 +208,72 @@ sudo ../td3c
 
 ## [TD-4] - Classes de base pour la programmation multitâches
 
-### a) Classe Thread ?
+### a) Classe Thread
 
 #### Compilation
 
 ```bash
-g++ main_td3a.cpp TimeSpec.cpp OSTempsReel/Chrono.cpp -lrt -o ../td3a
+g++ main_td4a.cpp TimeSpec.cpp OSTempsReel/PosixThread.cpp OSTempsReel/Thread.cpp OSTempsReel/Chrono.cpp -lrt -lpthread -o ../td4a
 ```
 
 #### Exécution
 
 ```bash
-../td3a
+sudo ../td4a
 ```
 
-### b) Classe Mutex et Mutex::Lock ?
+### b) Classe Mutex et Mutex::Lock
 
 #### Compilation
 
 ```bash
-g++ main_td3b.cpp TimeSpec.cpp OSTempsReel/Timer.cpp OSTempsReel/PeriodicTimer.cpp OSTempsReel/CountDown.cpp -lrt -lpthread -o ../td3b
+g++ main_td4b.cpp TimeSpec.cpp OSTempsReel/PosixThread.cpp OSTempsReel/Thread.cpp OSTempsReel/Mutex.cpp OSTempsReel/Chrono.cpp -lrt -lpthread -o ../td4b
 ```
 
 #### Exécution
 
 ```bash
-sudo ../td3b
+sudo ../td4b
 ```
 
-### c) Classe Semaphore ?
+### c) Classe Semaphore
 
 #### Compilation
 
 ```bash
-g++ main_td3c.cpp TimeSpec.cpp OSTempsReel/Timer.cpp OSTempsReel/PeriodicTimer.cpp OSTempsReel/Looper.cpp OSTempsReel/Calibrator.cpp OSTempsReel/CpuLoop.cpp -lrt -lpthread -o ../td3c
+g++ main_td4c.cpp TimeSpec.cpp OSTempsReel/PosixThread.cpp OSTempsReel/Thread.cpp OSTempsReel/Mutex.cpp OSTempsReel/Chrono.cpp -lrt -lpthread -o ../td4c
 ```
 
 #### Exécution
 
 ```bash
-sudo ../td3c
+sudo ../td4c
 ```
 
-### d) Classe Fifo multitâches ?
+### d) Classe Fifo multitâches
 
 #### Compilation
 
 ```bash
-g++ main_td3c.cpp TimeSpec.cpp OSTempsReel/Timer.cpp OSTempsReel/PeriodicTimer.cpp OSTempsReel/Looper.cpp OSTempsReel/Calibrator.cpp OSTempsReel/CpuLoop.cpp -lrt -lpthread -o ../td3c
+g++ main_td4d.cpp TimeSpec.cpp OSTempsReel/PosixThread.cpp OSTempsReel/Thread.cpp OSTempsReel/Mutex.cpp OSTempsReel/Chrono.cpp -lrt -lpthread -o ../td4d
 ```
 
 #### Exécution
 
 ```bash
-sudo ../td3c
+sudo ../td4d
 ```
 
-## [TD-5] - Inversion de priorité ?
+## [TD-5] - Inversion de priorité
 
 #### Compilation
 
 ```bash
-g++ main_td3a.cpp TimeSpec.cpp OSTempsReel/Chrono.cpp -lrt -o ../td3a
+g++ main_td5.cpp -lrt -lpthread -o ../td5
 ```
 
 #### Exécution
 
 ```bash
-../td3a
+sudo ../td5
 ```

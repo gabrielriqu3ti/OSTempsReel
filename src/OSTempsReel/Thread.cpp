@@ -23,7 +23,7 @@ using namespace OSTempsReel;
 *
 * But :                    Construteur de la classe
 ----------------------------------------------------------------------*/
-Thread::Thread()
+Thread::Thread() : started(false)
 {
     PosixThread(pThreadId);
 
@@ -48,9 +48,14 @@ Thread::~Thread()
 *
 * But :                    Retourner le temps absolu de fin
 ----------------------------------------------------------------------*/
-void Thread::start()
+bool Thread::start()
 {
-    PosixThread::start(call_run, (void*) this);
+    if(!started)
+    {
+        PosixThread::start(call_run, (void*) this);
+        started = true;
+    }
+    return started;
 }
 
 /*----------------------------------------------------------------------
@@ -100,46 +105,6 @@ double Thread::stopTime_ms()
 double Thread::execTime_ms()
 {
     return (chrono.stopTime() - chrono.startTime());
-}
-
-/*----------------------------------------------------------------------
-* Fonction :               setLoops
-* Auteur :                 RIQUETI
-* Date :                   31/11/2019
-*
-* But :                    Attribuer une valeur à nLoops
-----------------------------------------------------------------------*/
-void Thread::setLoops(unsigned int Loops)
-{
-    nLoops = Loops;
-}
-
-/*----------------------------------------------------------------------
-* Fonction :               getCount
-* Auteur :                 RIQUETI
-* Date :                   31/11/2019
-*
-* But :                    Retourner le compteur
-----------------------------------------------------------------------*/
-unsigned int Thread::getCount()
-{
-    return count;
-}
-
-/*----------------------------------------------------------------------
-* Fonction :               run
-* Auteur :                 RIQUETI
-* Date :                   30/11/2019
-*
-* But :                    ?
-----------------------------------------------------------------------*/
-void Thread::run()
-{
-    chrono.restart();
-
-    for(unsigned int i=0; i<nLoops; i++) count ++;
-
-    chrono.stop();
 }
 
 /*----------------------------------------------------------------------
