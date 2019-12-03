@@ -61,7 +61,7 @@ Mutex::~Mutex()
 * Auteur :                 RIQUETI
 * Date :                   01/12/2019
 *
-* But :                    ?
+* But :                    Verrouiller une thread
 ----------------------------------------------------------------------*/
 void Mutex::lock()
 {
@@ -76,7 +76,7 @@ void Mutex::lock()
 * Auteur :                 RIQUETI
 * Date :                   01/12/2019
 *
-* But :                    ?
+* But :                    Verrouiller une thread pendant un temps spécifié
 ----------------------------------------------------------------------*/
 bool Mutex::lock(double timeout_ms)
 {
@@ -95,7 +95,7 @@ bool Mutex::lock(double timeout_ms)
 * Auteur :                 RIQUETI
 * Date :                   01/12/2019
 *
-* But :                    ?
+* But :                    Essayer de verrouiller un thread
 ----------------------------------------------------------------------*/
 bool Mutex::trylock()
 {
@@ -113,7 +113,7 @@ bool Mutex::trylock()
 * Auteur :                 RIQUETI
 * Date :                   01/12/2019
 *
-* But :                    ?
+* But :                    Déverrouiller un thread
 ----------------------------------------------------------------------*/
 void Mutex::unlock()
 {
@@ -141,7 +141,7 @@ Mutex::Monitor::Monitor(Mutex& m)
 * Auteur :                 RIQUETI
 * Date :                   01/12/2019
 *
-* But :                    ?
+* But :                    Attendre une signal pour continuer
 ----------------------------------------------------------------------*/
 void Mutex::Monitor::wait()
 {
@@ -157,7 +157,8 @@ void Mutex::Monitor::wait()
 * Auteur :                 RIQUETI
 * Date :                   01/12/2019
 *
-* But :                    ?
+* But :                    Attendre une signal pour continuer pour
+*                          un temps spécifié
 ----------------------------------------------------------------------*/
 bool Mutex::Monitor::wait(double timeout_ms)
 {
@@ -180,7 +181,8 @@ bool Mutex::Monitor::wait(double timeout_ms)
 * Auteur :                 RIQUETI
 * Date :                   01/12/2019
 *
-* But :                    ?
+* But :                    Envoyer un signal à autres thread pour
+*                          continuer
 ----------------------------------------------------------------------*/
 void Mutex::Monitor::notify()
 {
@@ -196,7 +198,8 @@ void Mutex::Monitor::notify()
 * Auteur :                 RIQUETI
 * Date :                   01/12/2019
 *
-* But :                    ?
+* But :                    Envoyer un signal à tous les threads pour
+*                          continuer
 ----------------------------------------------------------------------*/
 void Mutex::Monitor::notifyAll()
 {
@@ -212,7 +215,7 @@ void Mutex::Monitor::notifyAll()
 * Auteur :                 RIQUETI
 * Date :                   01/12/2019
 *
-* But :                    Constructeur de la
+* But :                    Constructeur de la classe
 ----------------------------------------------------------------------*/
 Mutex::Monitor::TimeoutException::TimeoutException(int rVal)
 {

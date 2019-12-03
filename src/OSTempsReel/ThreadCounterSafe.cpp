@@ -100,7 +100,8 @@ void ThreadCounterSafe::nextThreadActive()
 * Auteur :                 RIQUETI
 * Date :                   01/12/2019
 *
-* But :                    ?
+* But :                    Incrémenter un compteur pour un nombre
+*                          spécifié de fois
 ----------------------------------------------------------------------*/
 void ThreadCounterSafe::run()
 {

@@ -51,7 +51,7 @@ int main(int argc, char *argv[])
         incr(nLoops, &counter);
         clock_gettime(CLOCK_REALTIME, &end);
         cout << "Compteur : " << counter << endl;
-        cout << "Temps d'exécution : " << timespec_to_ms(end-begin) << " ms" << endl;
+        cout << "Temps d'exécution : " << timespec_to_ms(end-begin)/1000 << " s" << endl;
     }
 
     return 0;

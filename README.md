@@ -265,7 +265,7 @@ TIMEOUT_MS (optionel) : entier non signé.
 #### Compilation
 
 ```bash
-g++ main_td4c.cpp TimeSpec.cpp OSTempsReel/PosixThread.cpp OSTempsReel/Thread.cpp OSTempsReel/Mutex.cpp OSTempsReel/Chrono.cpp -lrt -lpthread -o ../td4c
+g++ main_td4c.cpp -lrt -lpthread -o ../td4c
 ```
 
 #### Exécution
@@ -279,7 +279,7 @@ sudo ../td4c
 #### Compilation
 
 ```bash
-g++ main_td4d.cpp TimeSpec.cpp OSTempsReel/PosixThread.cpp OSTempsReel/Thread.cpp OSTempsReel/Mutex.cpp OSTempsReel/Chrono.cpp -lrt -lpthread -o ../td4d
+g++ main_td4d.cpp -lrt -lpthread -o ../td4d
 ```
 
 #### Exécution

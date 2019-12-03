@@ -61,7 +61,7 @@ int main(int argc, char *argv[])
 {
     if (argc==1 || argc==2 || argc==3)
     {
-        cout << "Tapez le taile de la boucle et le nombre des tâches et l'ordenance de tâches (SCHED_RR, SCHED_FIFO ou SCHED_OTHER) " << endl;
+        cout << "Tapez le taile de la boucle et le nombre des tâches et l'ordonnance de tâches (SCHED_RR, SCHED_FIFO ou SCHED_OTHER) " << endl;
     }
     else if (argc==4)
     {
@@ -102,7 +102,7 @@ int main(int argc, char *argv[])
 
         cout << "Boucle de taille " << data.nLoops << endl;
         cout << "Nombre de tâches : " << nTasks << endl;
-        cout << "Ordenance : ";
+        cout << "Ordonnance : ";
         if(schedPolicy==SCHED_RR)
         {
             cout << "SCHED_RR" << endl;
