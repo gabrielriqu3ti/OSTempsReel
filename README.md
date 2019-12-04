@@ -235,14 +235,10 @@ ORDENANCE :
 #### Compilation
 
 ```bash
-g++ td4b_main.cpp TimeSpec.cpp OSTempsReel/PosixThread.cpp OSTempsReel/Thread.cpp OSTempsReel/Chrono.cpp OSTempsReel/ThreadCounterSafe.cpp OSTempsReel/Mutex.cpp -lrt -lpthread -o ../td4b && sudo ../td4b
+g++ td4b_main.cpp TimeSpec.cpp OSTempsReel/PosixThread.cpp OSTempsReel/Thread.cpp OSTempsReel/Chrono.cpp OSTempsReel/ThreadCounterSafe.cpp OSTempsReel/Mutex.cpp -lrt -lpthread -o ../td4b
 ```
 
 #### Exécution
-
-```bash
-sudo ../td4b
-```
 
 ```bash
 sudo ../td4b [TAILLE_DE_LA_BOUCLE] [NOMBRE_DE_TACHES] [ORDENANCE] [TIMEOUT_MS]
